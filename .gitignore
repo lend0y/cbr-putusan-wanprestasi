@@ -1,0 +1,35 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+.venv/
+venv/
+env/
+
+# Jupyter
+.ipynb_checkpoints/
+*.ipynb_checkpoints
+
+# Raw PDFs — terlalu besar untuk Git, simpan di Drive saja
+data/raw/pdf/*.pdf
+data/raw/html/*.html
+
+# Logs
+logs/*.log
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.swp
+
+# Local secrets
+.env
+*.key
+
+# Hasil running yang regenerable
+data/raw/text/*.txt
