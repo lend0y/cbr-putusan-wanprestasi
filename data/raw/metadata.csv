@@ -1,0 +1,36 @@
+case_id,no_perkara,tanggal_putusan,tahun,pengadilan,klasifikasi,detail_url
+case_001,48/PDT/2020,17/03/2020,2020,PT JAKARTA,Wanprestasi,https://putusan3.mahkamahagung.go.id/direktori/putusan/dd9bcc73b179a1af0a399cfeaec52655.html
+case_002,106/PDT/2020,27/08/2020,2020,PT SAMARINDA,Wanprestasi,https://putusan3.mahkamahagung.go.id/direktori/putusan/2fd8a66579adaf46bac0935aa393147f.html
+case_003,101/Pdt.G/2020,16/07/2020,2020,PN BATAM,Wanprestasi,https://putusan3.mahkamahagung.go.id/direktori/putusan/513930ca5dd63876c8984d6120cd5e39.html
+case_004,153/Pdt.G/2019,29/01/2020,2020,PN PEKANBARU,Wanprestasi,https://putusan3.mahkamahagung.go.id/direktori/putusan/5ae17af172313e2a19d25b5cab9cd61c.html
+case_005,9/Pdt.G/2020,01/09/2020,2020,PN PARIAMAN,Wanprestasi,https://putusan3.mahkamahagung.go.id/direktori/putusan/4928d9a6e214dce860f32615a0c772bb.html
+case_006,175/Pdt.G/2020,09/03/2021,2021,PN MALANG,Wanprestasi,https://putusan3.mahkamahagung.go.id/direktori/putusan/zaeb85520a4c6264bdb3313234383137.html
+case_007,151/Pdt.G/2020,29/03/2021,2021,PN BALIKPAPAN,Wanprestasi,https://putusan3.mahkamahagung.go.id/direktori/putusan/zaeb92bd027be75888ad313433363435.html
+case_008,86/Pdt.G/2021,04/10/2021,2021,PN BALE BANDUNG,Wanprestasi,https://putusan3.mahkamahagung.go.id/direktori/putusan/zaecdff81bdd3aecbf67313630383435.html
+case_009,30/Pdt.G/2021,14/10/2021,2021,	PN WONOSARI,Wanprestasi,https://putusan3.mahkamahagung.go.id/direktori/putusan/zaec33181fc16ddc93cf313631323034.html
+case_010,591/Pdt.G/2020,13/01/2021,2021,PN JAKARTA SELATAN,Wanprestasi,https://putusan3.mahkamahagung.go.id/direktori/putusan/zaed494433982a06a915313630373539.html
+case_011,52/Pdt.G/2021,19/01/2022,2022,	PN KARANGAYAR,Wanprestasi,https://putusan3.mahkamahagung.go.id/direktori/putusan/zaec7fe6e6358fa0b019313030333432.html
+case_012,157/Pdt.G/2022,26/07/2022,2022,PN DEPOK,Wanprestasi,https://putusan3.mahkamahagung.go.id/direktori/putusan/zaed5a84421cf61489b5313435393230.html
+case_013,105/Pdt.G/2022,24/10/2022,2022,PN DEPOK,Wanprestasi,https://putusan3.mahkamahagung.go.id/direktori/putusan/zaed5a603d8456a2a05e313034313331.html
+case_014,5/Pdt.G/2022,25/01/2022,2022,PN MALANG,Wanprestasi,https://putusan3.mahkamahagung.go.id/direktori/putusan/zaec7e7b37556e369859313434303231.html
+case_015,138/Pdt.G/2022,15/12/2022,2022,	PN PELAIHARI,Wanprestasi,https://putusan3.mahkamahagung.go.id/direktori/putusan/zaeda12f63e5d83cbc0b313332303432.html
+case_016,357/PDT/2023,31/07/2023,2023,PT JAKARTA,Wanprestasi,https://putusan3.mahkamahagung.go.id/direktori/putusan/zaee35a6c7def9caa1ae313134383132.html
+case_017,456/PDT/2023,24/08/2023,2023,PT BANDUNG,Wanprestasi,https://putusan3.mahkamahagung.go.id/direktori/putusan/zaee424292091ad08316313235333338.html
+case_018,179/PDT/2023,28/03/2023,2023,PT SURABAYA,Wanprestasi,https://putusan3.mahkamahagung.go.id/direktori/putusan/zaedcd20d2ee40a8a218313132373137.html
+case_019,275/Pdt.G/2022,14/08/2023,2023,	PN SLEMAN,Wanprestasi,https://putusan3.mahkamahagung.go.id/direktori/putusan/zaee3b13113f376cbf00303932353537.html
+case_020,553/Pdt.G/2023,24/09/2023,2023,PN SURABAYA,Wanprestasi,https://putusan3.mahkamahagung.go.id/direktori/putusan/zaee727975622b08a2fc323132373238.html
+case_021,41/Pdt.G/2024,01/04/2024,2024,PN JAKARTA PUSAT,Wanprestasi,https://putusan3.mahkamahagung.go.id/direktori/putusan/zaeef2e9760c4624af1d303831313431.html
+case_022,171/Pdt.G/2023,23/04/2024,2024,PN BALIKPAPAN,Wanprestasi,https://putusan3.mahkamahagung.go.id/direktori/putusan/zaef06c899317cda8b4f313530363530.html
+case_023,376/Pdt.G/2024,28/10/2024,2024,PN CIBINONG,Wanprestasi,https://putusan3.mahkamahagung.go.id/direktori/putusan/zaef9675533775bcb3b0313131333332.html
+case_024,55/Pdt.G/2023,31/01/2024,2024,PN SAMPIT,Wanprestasi,https://putusan3.mahkamahagung.go.id/direktori/putusan/zaef02d2cba19924b3ec313430393435.html
+case_025, 128/Pdt.G/2024/PN Plk,14/08/2024,2024,PN PALANGKARAYA,Wanprestasi,https://putusan3.mahkamahagung.go.id/direktori/putusan/zaef5a2d7690abaca22c313830373538.html
+case_026, 1101/Pdt.G/2024,03/02/2025,2025,PN DENPASAR,Wanprestasi,https://putusan3.mahkamahagung.go.id/direktori/putusan/zaefe92591ac8a1e8bd2313634313433.html
+case_027,68/Pdt.G/2025/PN Kdi,18/06/2025,2025,PN KENDARI,Wanprestasi,https://putusan3.mahkamahagung.go.id/direktori/putusan/zaf0517b25eea44cac51313131363230.html
+case_028, 35/Pdt.G/2024/PN Grt,14/04/2025,2025,PN GARUT,Wanprestasi,https://putusan3.mahkamahagung.go.id/direktori/putusan/zaf019b404914af6a079313134323230.html
+case_029,670/Pdt.G/2024/PN Mdn,13/11/2025,2025,PN MEDAN,Wanprestasi,https://putusan3.mahkamahagung.go.id/direktori/putusan/zaf0c0782106e07c80ae313730343233.html
+case_030,53/Pdt.G/2025/PN Skh,04/06/2025,2025,PN SUKOHARJO,Wanprestasi,https://putusan3.mahkamahagung.go.id/direktori/putusan/zaf0468b617cfde281c4313331343439.html
+case_031,476/Pdt.G/2025/PN Sby,29/01/2026,2026,PN SURABAYA,Wanprestasi,https://putusan3.mahkamahagung.go.id/direktori/putusan/zaf0fd8a04193a7eb7bd313031363036.html
+case_032,40/Pdt.G/2025/PN Wng,07/04/2026,2026,PN WONOGIRI,Wanprestasi,https://putusan3.mahkamahagung.go.id/direktori/putusan/zaf132ff2cb3b504949d313035383137.html
+case_033,813/Pdt.G/2025/PN Jkt.Sel,09/04/2026,2026,PN JAKARTA SELATAN,Wanprestasi,https://putusan3.mahkamahagung.go.id/direktori/putusan/zaf11ce868fabd28ab66303831393534.html
+case_034,310/Pdt.G/2025/PN Smn,09/04/2026,2026,PN SLEMAN,Wanprestasi,https://putusan3.mahkamahagung.go.id/direktori/putusan/zaf134bf87e7c3a4b8fb313632373434.html
+case_035,184/Pdt.G/2025/PN Bgr,05/02/2026,2026,PN BOGOR,Wanprestasi,https://putusan3.mahkamahagung.go.id/direktori/putusan/zaf111f0fea23152a1c5303931363239.html
