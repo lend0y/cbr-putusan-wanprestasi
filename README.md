@@ -2,7 +2,7 @@
 
 Sistem Case-Based Reasoning (CBR) sederhana untuk analisis putusan pengadilan perkara Perdata Wanprestasi, menggunakan data dari Direktori Putusan Mahkamah Agung Republik Indonesia.
 
-> **Status:** 🚧 Work in progress — saat ini di Tahap 1 (Membangun Case Base)
+> **Status:** 🚧 Work in progress — saat ini di Tahap 3: Case Retrieval
 
 ## Tim
 
@@ -44,7 +44,7 @@ cbr-putusan-wanprestasi/
 ## Progress
 
 - [x] Tahap 1: Case Base (scraping + extraction + cleaning)
-- [ ] Tahap 2: Case Representation
+- [x] Tahap 2: Case Representation
 - [ ] Tahap 3: Case Retrieval
 - [ ] Tahap 4: Solution Reuse
 - [ ] Tahap 5: Revise & Retain
