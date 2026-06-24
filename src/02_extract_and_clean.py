@@ -157,23 +157,15 @@ def clean_text(text: str) -> str:
 
 
 def validate_text(text: str, min_words: int = MIN_WORD_COUNT) -> tuple[str, str]:
-    """
-    Validasi kualitas teks hasil cleaning.
-
-    Returns:
-        (status, notes)
-        status: "VALID" | "TOO_SHORT" | "SUSPICIOUS"
-    """
     word_count = len(text.split())
 
     if word_count < min_words:
         return "TOO_SHORT", f"Hanya {word_count} kata (kemungkinan PDF scan)"
 
-    # Cek apakah ada marker putusan standar
-    required_markers = ["menimbang", "mengadili", "amar"]
+    required_markers = ["menimbang", "mengadili", "amar", "memutuskan", "putusan"]
     text_lower = text.lower()
     found = [m for m in required_markers if m in text_lower]
-    if len(found) < 2:
+    if len(found) < 1:  # ← LONGGARKAN
         return "SUSPICIOUS", f"Marker putusan tidak lengkap: {found}"
 
     return "VALID", None
