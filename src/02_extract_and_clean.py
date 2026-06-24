@@ -31,8 +31,13 @@ from pdfminer.pdfparser import PDFSyntaxError
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from utils import (
-    PDF_DIR, TEXT_DIR, CLEAN_DIR, RAW_DIR, LOGS_DIR,
-    ensure_dirs, setup_logger,
+    PDF_DIR,
+    TEXT_DIR,
+    CLEAN_DIR,
+    RAW_DIR,
+    LOGS_DIR,
+    ensure_dirs,
+    setup_logger,
 )
 
 
@@ -42,6 +47,7 @@ MIN_WORD_COUNT = 500
 @dataclass
 class ProcessingResult:
     """Hasil pemrosesan satu PDF."""
+
     case_id: str
     pdf_file: str
     text_file: Optional[str]
@@ -54,6 +60,7 @@ class ProcessingResult:
 
 
 # ─── Ekstraksi PDF ─────────────────────────────────────────────────
+
 
 def pdf_to_text(pdf_path: Path) -> tuple[str, str]:
     """
@@ -75,12 +82,18 @@ def pdf_to_text(pdf_path: Path) -> tuple[str, str]:
 
 # ─── Cleaning Functions ────────────────────────────────────────────
 
+
 def normalize_unicode(text: str) -> str:
     """Normalisasi karakter unicode (smart quotes, dll)."""
     text = unicodedata.normalize("NFKC", text)
     replacements = {
-        "\u2018": "'", "\u2019": "'", "\u201C": '"', "\u201D": '"',
-        "\u2013": "-", "\u2014": "-", "\u00a0": " ",
+        "\u2018": "'",
+        "\u2019": "'",
+        "\u201c": '"',
+        "\u201d": '"',
+        "\u2013": "-",
+        "\u2014": "-",
+        "\u00a0": " ",
     }
     for old, new in replacements.items():
         text = text.replace(old, new)
@@ -90,10 +103,13 @@ def normalize_unicode(text: str) -> str:
 def remove_page_numbers(text: str) -> str:
     """Hapus pola nomor halaman."""
     text = re.sub(r"^\s*-?\s*\d{1,3}\s*-?\s*$", "", text, flags=re.MULTILINE)
-    text = re.sub(r"^\s*Halaman\s+\d+\s+dari\s+\d+.*$", "", text,
-                  flags=re.MULTILINE | re.IGNORECASE)
-    text = re.sub(r"^\s*Hal\.?\s*\d+.*$", "", text,
-                  flags=re.MULTILINE | re.IGNORECASE)
+    text = re.sub(
+        r"^\s*Halaman\s+\d+\s+dari\s+\d+.*$",
+        "",
+        text,
+        flags=re.MULTILINE | re.IGNORECASE,
+    )
+    text = re.sub(r"^\s*Hal\.?\s*\d+.*$", "", text, flags=re.MULTILINE | re.IGNORECASE)
     return text
 
 
@@ -139,6 +155,7 @@ def clean_text(text: str) -> str:
 
 # ─── Validasi ──────────────────────────────────────────────────────
 
+
 def validate_text(text: str, min_words: int = MIN_WORD_COUNT) -> tuple[str, str]:
     """
     Validasi kualitas teks hasil cleaning.
@@ -164,6 +181,7 @@ def validate_text(text: str, min_words: int = MIN_WORD_COUNT) -> tuple[str, str]
 
 # ─── Pipeline Pemrosesan ───────────────────────────────────────────
 
+
 def process_pdf(pdf_path: Path, logger) -> ProcessingResult:
     """Proses satu file PDF end-to-end."""
     case_id = pdf_path.stem.split("_")[0] + "_" + pdf_path.stem.split("_")[1]
@@ -172,10 +190,14 @@ def process_pdf(pdf_path: Path, logger) -> ProcessingResult:
     if status != "OK":
         logger.warning(f"{case_id}: ekstraksi gagal — {status}")
         return ProcessingResult(
-            case_id=case_id, pdf_file=str(pdf_path),
-            text_file=None, cleaned_file=None,
-            word_count_raw=0, word_count_clean=0,
-            extraction_status=status, validation_status="N/A",
+            case_id=case_id,
+            pdf_file=str(pdf_path),
+            text_file=None,
+            cleaned_file=None,
+            word_count_raw=0,
+            word_count_clean=0,
+            extraction_status=status,
+            validation_status="N/A",
             notes="Tidak dapat ekstraksi teks",
         )
 
@@ -230,7 +252,7 @@ def process_all() -> list[ProcessingResult]:
     summary_file = RAW_DIR / "processing_summary.json"
     summary_file.write_text(
         json.dumps([asdict(r) for r in results], indent=2, ensure_ascii=False),
-        encoding="utf-8"
+        encoding="utf-8",
     )
 
     # Statistik
@@ -250,12 +272,17 @@ def process_all() -> list[ProcessingResult]:
 
 
 def main() -> None:
+    global MIN_WORD_COUNT
+
     parser = argparse.ArgumentParser(description="Extract + Clean PDF putusan")
-    parser.add_argument("--min-words", type=int, default=MIN_WORD_COUNT,
-                        help="Minimum word count untuk dianggap valid")
+    parser.add_argument(
+        "--min-words",
+        type=int,
+        default=MIN_WORD_COUNT,
+        help="Minimum word count untuk dianggap valid",
+    )
     args = parser.parse_args()
 
-    global MIN_WORD_COUNT
     MIN_WORD_COUNT = args.min_words
 
     process_all()
