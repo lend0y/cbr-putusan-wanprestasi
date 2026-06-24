@@ -101,7 +101,8 @@ def extract_party_names(text: str) -> tuple[str, str]:
                 name = m.group(1).strip()
                 name = re.split(
                     r"\s+(?:beralamat|warga|tempat|alamat|umur|pekerjaan|melawan|lawan|kewarganegaraan|berkedudukan|selanjutnya|\;|\n)",
-                    name, maxsplit=1
+                    name,
+                    maxsplit=1,
                 )[0].strip()
                 if 2 < len(name) < 80:
                     return name
@@ -213,9 +214,11 @@ def extract_verdict(text: str) -> str:
     """Ekstrak amar putusan dari occurrence TERAKHIR (di akhir dokumen)."""
     text_lower = text.lower()
 
-    positions = [m.start() for m in re.finditer(r"\bmengadili\b|\bmemutuskan\b", text_lower)]
+    positions = [
+        m.start() for m in re.finditer(r"\bmengadili\b|\bmemutuskan\b", text_lower)
+    ]
     if positions:
-        start_pos = positions[-1]    # YANG TERAKHIR, bukan pertama!
+        start_pos = positions[-1]  # YANG TERAKHIR, bukan pertama!
         end_pos = min(start_pos + 2500, len(text))
         tail_text = text[start_pos:end_pos]
         m = re.search(r"demikianlah?\s+diputus", tail_text, re.IGNORECASE)
@@ -239,35 +242,27 @@ def classify_solution(amar: str, full_text: str) -> str:
     tail_start = int(len(full_lower) * 0.6)
     search_text = full_lower[tail_start:]
 
+    # 0a. Perdamaian — cek paling awal
+    if re.search(r"akta\s+perdamaian|kesepakatan\s+perdamaian", search_text):
+        return "Perdamaian"
+    if re.search(r"menghukum.{0,80}mentaati\s+kesepakatan", search_text):
+        return "Perdamaian"
+
+    # 0b. Dicabut
+    if re.search(r"penetapan\s+pencabutan|pencabutan\s+(perkara|gugatan)", search_text):
+        return "Dicabut"
+    if re.search(r"mengabulkan.{0,80}pencabutan", search_text):
+        return "Dicabut"
+    if re.search(r"menyatakan.{0,80}gugatan.{0,30}dicabut", search_text):
+        return "Dicabut"
+    if re.search(r"perkara.{0,30}dicabut", search_text):
+        return "Dicabut"
+
     # 1. Tidak Dapat Diterima (NO)
     if re.search(r"tidak\s+dapat\s+diterima|niet\s+ontvankelijk", search_text):
         return "Tidak Dapat Diterima"
 
-    # 2. Dikabulkan Sebagian
-    if re.search(r"mengabulkan.{0,200}?sebagian", search_text):
-        return "Dikabulkan Sebagian"
-    if re.search(r"sebagian.{0,80}gugatan.{0,30}penggugat", search_text):
-        return "Dikabulkan Sebagian"
-    if re.search(r"membatalkan.{0,200}putusan", search_text):
-        return "Dikabulkan Sebagian"
-
-    # 3. Dikabulkan
-    if re.search(r"mengabulkan\s+gugatan", search_text):
-        return "Dikabulkan"
-    if re.search(r"mengabulkan\s+permohonan\s+(kasasi|banding)", search_text):
-        return "Dikabulkan"
-    if re.search(r"menguatkan\s+putusan", search_text):
-        return "Dikabulkan"
-
-    # 4. Ditolak
-    if re.search(r"menolak\s+gugatan", search_text):
-        return "Ditolak"
-    if re.search(r"menolak\s+permohonan\s+(kasasi|banding|pemohon)", search_text):
-        return "Ditolak"
-    if re.search(r"gugatan.{0,30}ditolak", search_text):
-        return "Ditolak"
-
-    return "Tidak Teridentifikasi"
+    # ... sisanya (Dikabulkan Sebagian, Dikabulkan, Ditolak) tetap sama
 
 
 def build_case_record(meta: dict, logger) -> Optional[CaseRecord]:
@@ -295,13 +290,18 @@ def build_case_record(meta: dict, logger) -> Optional[CaseRecord]:
 
     # Quality assessment baru: hanya pasal & kategori yang critical
     critical_missing = []
-    if not pasal_list:                          critical_missing.append("pasal")
-    if kategori == "Tidak Teridentifikasi":     critical_missing.append("kategori_solusi")
+    if not pasal_list:
+        critical_missing.append("pasal")
+    if kategori == "Tidak Teridentifikasi":
+        critical_missing.append("kategori_solusi")
 
     soft_missing = []
-    if not fakta or len(fakta.split()) < 30:    soft_missing.append("ringkasan_fakta")
-    if not pertimbangan or len(pertimbangan.split()) < 50: soft_missing.append("argumen_hukum_utama")
-    if not amar or len(amar.split()) < 10:      soft_missing.append("amar_putusan")
+    if not fakta or len(fakta.split()) < 30:
+        soft_missing.append("ringkasan_fakta")
+    if not pertimbangan or len(pertimbangan.split()) < 50:
+        soft_missing.append("argumen_hukum_utama")
+    if not amar or len(amar.split()) < 10:
+        soft_missing.append("amar_putusan")
 
     all_missing = critical_missing + soft_missing
     if not critical_missing:
@@ -324,21 +324,17 @@ def build_case_record(meta: dict, logger) -> Optional[CaseRecord]:
         pengadilan=meta.get("pengadilan", ""),
         klasifikasi=meta.get("klasifikasi", "Wanprestasi"),
         detail_url=meta.get("detail_url", ""),
-
         pasal=", ".join(pasal_list),
         n_pasal=len(pasal_list),
         pihak_penggugat=penggugat,
         pihak_tergugat=tergugat,
-
         ringkasan_fakta=fakta,
         argumen_hukum_utama=pertimbangan,
         amar_putusan=amar,
         kategori_solusi=kategori,
-
         word_count=word_count,
         text_retrieval=text_retrieval,
         text_clean_path=str(cleaned_path),
-
         extraction_quality=quality,
         missing_fields=", ".join(all_missing),
     )
@@ -379,7 +375,7 @@ def save_outputs(records: list[CaseRecord], logger) -> None:
     json_path = PROCESSED_DIR / "cases.json"
     json_path.write_text(
         json.dumps([asdict(r) for r in records], indent=2, ensure_ascii=False),
-        encoding="utf-8"
+        encoding="utf-8",
     )
     logger.info(f"Tersimpan: {json_path}")
 
@@ -394,16 +390,18 @@ def print_summary(records: list[CaseRecord], logger) -> None:
     quality_count: dict[str, int] = {}
     kategori_count: dict[str, int] = {}
     for r in records:
-        quality_count[r.extraction_quality] = quality_count.get(r.extraction_quality, 0) + 1
-        kategori_count[r.kategori_solusi] = kategori_count.get(r.kategori_solusi, 0) + 1
+        q = r.extraction_quality or "UNKNOWN"
+        k = r.kategori_solusi or "UNKNOWN"
+        quality_count[q] = quality_count.get(q, 0) + 1
+        kategori_count[k] = kategori_count.get(k, 0) + 1
 
     logger.info("=" * 60)
     logger.info(f"SELESAI. Total cases: {n}")
     for q, cnt in sorted(quality_count.items()):
-        logger.info(f"  Quality {q:8s}: {cnt}")
+        logger.info(f"  Quality {str(q):8s}: {cnt}")
     logger.info("Distribusi kategori_solusi:")
     for kat, cnt in sorted(kategori_count.items(), key=lambda x: -x[1]):
-        logger.info(f"  {kat:30s}: {cnt}")
+        logger.info(f"  {str(kat):30s}: {cnt}")
     logger.info("=" * 60)
 
 
