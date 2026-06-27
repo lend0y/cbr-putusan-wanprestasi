@@ -1,0 +1,68 @@
+[
+  {
+    "query_id": "Q001",
+    "query_text": "Menimbang, bahwa Terbanding semula Penggugat dengan suratgugatan tanggal 28 Oktober 2019 yang diterima dan didaftarkan diKepaniteraan Pengadilan Negeri Balikpapan pada tanggal 30 Oktober 2019dalam Register Nomor 202/Pdt.G/2019/PN Bpp, telah mengajukan gugatansebagai berikut:1.Bahwa pada akhir Tahun 2015, Penggugat ada didatangi oleh TemanPenggugat yaitu Tergugat I dan seorangtemannya untuk memintabantuan Pinjaman Uang kepada Penggugat atauuntuk dapat dicarikanpinjaman Uang kepada pihak lain sebe",
+    "ground_truth_case_ids": [
+      "case_002"
+    ],
+    "expected_kategori": "Tidak Dapat Diterima",
+    "source": "synthetic",
+    "notes": "Generated from case_002 ringkasan_fakta"
+  },
+  {
+    "query_id": "Q002",
+    "query_text": "Menimbang, bahwa Penggugat dengan surat gugatan tanggal 18 Juli2020 yang diterima dan didaftarkan di Kepaniteraan Pengadilan NegeriBalikpapan pada tanggal 07 Agustus 2020 dalam Register Nomor151/Pdt.G/2020/PN Bpp, telah mengajukan gugatan sebagai berikut:1. Objek Sengketa Bahwa Objek Sengketa dalam perkara aquo adalaha.Tanah seluas: 157 M2 dengan Sertifikat Hak Milik Nomor : 5494, NIB:16.02.05.06.01.05499, atas Nama \"ESTI UTAMI\" , Penerbitan SertifikatHalaman 1 dari 19 Putusan Perdata Gugatan No",
+    "ground_truth_case_ids": [
+      "case_007"
+    ],
+    "expected_kategori": "Dikabulkan",
+    "source": "synthetic",
+    "notes": "Generated from case_007 ringkasan_fakta"
+  },
+  {
+    "query_id": "Q003",
+    "query_text": "kiri sengketa ini melalui proses Perdamaian diPengadilan Negeri Wonosari dengan segala itikad baik;Pasal 2Bahwa Tergugat mengakui bahwa sampai dengan saat ini memiliki hutang kepadaPenggugat sebesar Rp.182.500.000,- (seratus delapan puluh dua juta lima ratus riburupiah);Pasal 3(1)Bahwa Para Pihak sepakat, pembayaran hutang oleh Tergugat kepadaPenggugat sebagaimana yang dimaksud dalam pasal 2 akan dilakukan secarabertahap sebanyak 6 (enam) tahap dengan perincian sebagai berikut:1.Pembayaran tahap",
+    "ground_truth_case_ids": [
+      "case_009"
+    ],
+    "expected_kategori": "Perdamaian",
+    "source": "synthetic",
+    "notes": "Generated from case_009 ringkasan_fakta"
+  },
+  {
+    "query_id": "Q004",
+    "query_text": "Menimbang, bahwa Pembanding semula Tergugat dalam gugatannyatertanggal 4 Desember 2018 yang didaftarkan di Kepaniteraan Pengadilan NegeriJakarta Pusat, dalam Register Nomor 675/Pdt.G/2018/PN.Jkt.Pst, tanggal5 Desember 2018, telah mengemukakan hal-hal sebagai berikut :A.Kompetensi Pengadilan Negeri Jakarta Pusat Penggugat telah tepat mengajukan gugatan ke Pengadilan Negeri JakartaPusat sesuai dengan domisili yang telah dipilih oleh para pihak dalam perkaraa quo sebagaimana tercantum dalam Pasal 1",
+    "ground_truth_case_ids": [
+      "case_001"
+    ],
+    "expected_kategori": "Dikabulkan Sebagian",
+    "source": "synthetic",
+    "notes": "Generated from case_001 ringkasan_fakta"
+  },
+  {
+    "query_id": "Q005",
+    "query_text": "Direktori Putusan\nHalaman 1\nP E N E T A P A NNomor 5/Pdt.G/2022/PN MlgDEMI KEADILAN BERDASARKAN KETUHANAN YANG MAHA ESA;Pengadilan Negeri Malang yang mengadili perkara perdata gugatan padatingkat pertama, telah menjatuhkan penetapan sebagai berikut dalam perkaragugatan antara:Daniel Nugroho, tempat lahir: Malang, tanggal lahir: 30 November 1962,alamat Jl. Sukarno Hatta Nomor 23, RT 007/RW 010, Kel.Mojolangu, Kec. Lowokwaru, Kota Malang, Jawa Timur Liana Henry, tempat lahir: Malang, tanggal: 4 Se",
+    "ground_truth_case_ids": [
+      "case_014"
+    ],
+    "expected_kategori": "Dicabut",
+    "source": "synthetic",
+    "notes": "Generated from case_014 ringkasan_fakta"
+  },
+  {
+    "query_id": "Q006",
+    "query_text": "Penggugat dan tergugat telah menandatangani perjanjian kredit untuk pembelian rumah. Namun setelah jangka waktu yang disepakati, tergugat tidak melunasi sisa angsuran pinjaman yang menjadi kewajibannya kepada penggugat. Penggugat memohon agar tergugat dihukum membayar sisa hutang beserta bunga.",
+    "ground_truth_case_ids": [],
+    "expected_kategori": "Dikabulkan",
+    "source": "manual",
+    "notes": "Skenario wanprestasi kredit perumahan"
+  },
+  {
+    "query_id": "Q007",
+    "query_text": "Para pihak menandatangani perjanjian jual beli kendaraan bermotor. Penggugat telah membayar lunas harga yang disepakati, tetapi tergugat tidak menyerahkan kendaraan beserta dokumen kepemilikan sesuai dengan kesepakatan. Tergugat juga tidak memberikan alasan yang jelas atas keterlambatan tersebut.",
+    "ground_truth_case_ids": [],
+    "expected_kategori": "Dikabulkan",
+    "source": "manual",
+    "notes": "Skenario wanprestasi jual beli barang"
+  }
+]

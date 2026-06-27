@@ -242,7 +242,7 @@ def classify_solution(amar: str, full_text: str) -> str:
     tail_start = int(len(full_lower) * 0.6)
     search_text = full_lower[tail_start:]
 
-    # 0a. Perdamaian — cek paling awal
+    # 0a. Perdamaian
     if re.search(r"akta\s+perdamaian|kesepakatan\s+perdamaian", search_text):
         return "Perdamaian"
     if re.search(r"menghukum.{0,80}mentaati\s+kesepakatan", search_text):
@@ -262,7 +262,31 @@ def classify_solution(amar: str, full_text: str) -> str:
     if re.search(r"tidak\s+dapat\s+diterima|niet\s+ontvankelijk", search_text):
         return "Tidak Dapat Diterima"
 
-    # ... sisanya (Dikabulkan Sebagian, Dikabulkan, Ditolak) tetap sama
+    # 2. Dikabulkan Sebagian
+    if re.search(r"mengabulkan.{0,200}?sebagian", search_text):
+        return "Dikabulkan Sebagian"
+    if re.search(r"sebagian.{0,80}gugatan.{0,30}penggugat", search_text):
+        return "Dikabulkan Sebagian"
+    if re.search(r"membatalkan.{0,200}putusan", search_text):
+        return "Dikabulkan Sebagian"
+
+    # 3. Dikabulkan
+    if re.search(r"mengabulkan\s+gugatan", search_text):
+        return "Dikabulkan"
+    if re.search(r"mengabulkan\s+permohonan\s+(kasasi|banding)", search_text):
+        return "Dikabulkan"
+    if re.search(r"menguatkan\s+putusan", search_text):
+        return "Dikabulkan"
+
+    # 4. Ditolak
+    if re.search(r"menolak\s+gugatan", search_text):
+        return "Ditolak"
+    if re.search(r"menolak\s+permohonan\s+(kasasi|banding|pemohon)", search_text):
+        return "Ditolak"
+    if re.search(r"gugatan.{0,30}ditolak", search_text):
+        return "Ditolak"
+
+    return "Tidak Teridentifikasi"
 
 
 def build_case_record(meta: dict, logger) -> Optional[CaseRecord]:
