@@ -1,0 +1,3 @@
+name,n_samples,accuracy,precision_weighted,recall_weighted,f1_weighted,precision_macro,recall_macro,f1_macro
+majority_vote,5,0.8,0.7,0.8,0.7333,0.7,0.8,0.7333
+weighted_similarity,5,1.0,1.0,1.0,1.0,1.0,1.0,1.0
