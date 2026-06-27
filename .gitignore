@@ -15,7 +15,11 @@ env/
 data/raw/pdf/*.pdf
 data/raw/html/*.html
 
-# Logs
+# Output ekstraksi yang regenerable
+data/raw/text/*.txt
+data/cleaned/*.txt
+
+# Logs (regenerable)
 logs/*.log
 
 # OS
@@ -31,5 +35,8 @@ Thumbs.db
 .env
 *.key
 
-# Hasil running yang regenerable
-data/raw/text/*.txt
+# Folder legacy
+dokumen/
+
+# Pastikan .gitkeep tetap ke-track meski folder isinya di-ignore
+!**/.gitkeep
